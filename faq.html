@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>FAQ - SkillBridge Global Institute</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        background: #f6f8ff;
+        color: #1e293b;
+      }
+
+      .faq-section {
+        padding: 140px 20px 60px;
+        background: linear-gradient(135deg, #667eea 0%, #2f2e31 100%);
+      }
+
+      .faq-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .faq-header {
+        text-align: center;
+        margin-bottom: 50px;
+        color: white;
+      }
+
+      .faq-header h2 {
+        font-size: 42px;
+        font-weight: 700;
+        margin: 0 0 12px;
+        letter-spacing: -0.5px;
+      }
+
+      .faq-header p {
+        font-size: 18px;
+        opacity: 0.92;
+        margin: 0;
+        max-width: 720px;
+        margin-inline: auto;
+      }
+
+      .accordion {
+        display: grid;
+        gap: 16px;
+        margin-bottom: 50px;
+      }
+
+      .accordion-item {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .accordion-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .accordion-header {
+        width: 100%;
+        text-align: left;
+        padding: 22px 28px;
+        font-size: 17px;
+        font-weight: 600;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #1e293b;
+        transition: background 0.2s ease;
+      }
+
+      .accordion-header:hover {
+        background: rgba(102, 126, 234, 0.08);
+      }
+
+      .icon-wrap {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .icon {
+        color: white;
+        font-size: 20px;
+        font-weight: 400;
+        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .accordion-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
+      }
+
+      .accordion-body p {
+        padding: 0 28px 24px;
+        margin: 0;
+        color: #475569;
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      .accordion-item.active .accordion-body {
+        max-height: 300px;
+      }
+
+      .accordion-item.active .icon-wrap {
+        transform: rotate(180deg);
+      }
+
+      .accordion-item.active .icon {
+        transform: rotate(45deg);
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 32px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .card h3 {
+        margin: 0 0 12px;
+        font-size: 22px;
+        font-weight: 700;
+        color: #1e293b;
+      }
+
+      .card p {
+        margin: 0 0 20px;
+        color: #64748b;
+        font-size: 15px;
+      }
+
+      .subscribe-form {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .subscribe-form input {
+        flex: 1;
+        padding: 14px 18px;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        outline: none;
+      }
+
+      .subscribe-form input:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+      }
+
+      .subscribe-form button {
+        padding: 14px 28px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 15px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .subscribe-form button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        color: #475569;
+        font-size: 15px;
+      }
+
+      .contact-item svg {
+        color: #667eea;
+        flex-shrink: 0;
+      }
+
+      .contact-item a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      .contact-item a:hover {
+        color: #764ba2;
+        text-decoration: underline;
+      }
+
+      small {
+        color: #94a3b8;
+        font-size: 13px;
+      }
+
+      @media (max-width: 768px) {
+        .faq-section {
+          padding: 120px 16px 40px;
+        }
+
+        .faq-header h2 {
+          font-size: 32px;
+        }
+
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .subscribe-form {
+          flex-direction: column;
+        }
+
+        .accordion-header {
+          padding: 18px 20px;
+          font-size: 16px;
+        }
+
+        .accordion-body p {
+          padding: 0 20px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo-wrap">
+        <nav class="site-nav">
+          <a href="index2.html" class="nav-brand">
+            <img class="website-logo" src="./images/sbgl.png" alt="SkillBridge logo" />
+          </a>
+
+          <button class="menu-toggle" type="button" aria-label="Open menu">
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+          </button>
+
+          <nav class="mobile-menu" id="mobileMenu">
+            <a href="index2.html" class="mobile-menu-link">Home</a>
+            <a href="About/about.html" class="mobile-menu-link">About</a>
+            <a href="courses.html" class="mobile-menu-link">Courses</a>
+            <a href="faq.html" class="mobile-menu-link">FAQ</a>
+          </nav>
+        </nav>
+      </div>
+
+      <section class="faq-section">
+        <div class="faq-wrapper">
+          <div class="faq-header">
+            <h2>Got Questions?</h2>
+            <p>
+              Find quick answers below. If you don’t see yours, reach out to us.
+            </p>
+          </div>
+<section class="faq-section">
+  <div class="faq-wrapper">
+    
+    <div class="faq-header">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+
+    <div class="accordion">
+      
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span>1. What is SkillBridge Global Institute?</span>
+          <div class="icon-wrap"><span class="icon">+</span></div>
+        </button>
+        <div class="accordion-body">
+          <p>SkillBridge Global Institute is a professional development center offering CPD-aligned training across healthcare, education, social care, management, and workforce skills. Our mission is "Building skills for global opportunities."</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span>2. Are your courses accredited?</span>
+          <div class="icon-wrap"><span class="icon">+</span></div>
+        </button>
+        <div class="accordion-body">
+          <p>Yes. Our courses are CPD-aligned, meaning they meet international standards for Continuing Professional Development. Learners receive a CPD-aligned diploma with a unique verification ID.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span>3. What courses do you currently offer?</span>
+          <div class="icon-wrap"><span class="icon">+</span></div>
+        </button>
+        <div class="accordion-body">
+          <p>We offer certificates in:</p>
+          <ul>
+            <li>Health & Social Care</li>
+            <li>Early Childhood Education</li>
+            <li>Emergency First Aid & CPR</li>
+            <li>Combo Package: Health Care + CPR</li>
+          </ul>
+          <p>More courses in management and technology will be added soon.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span>4. How are classes delivered?</span>
+          <div class="icon-wrap"><span class="icon">+</span></div>
+        </button>
+        <div class="accordion-body">
+          <p>All classes are online and interactive. Sessions are held in the morning: 9am – 1pm.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span>5. Who can enroll?</span>
+          <div class="icon-wrap"><span class="icon">+</span></div>
+        </button>
+        <div class="accordion-body">
+          <p>Our courses are designed for:</p>
+          <ul>
+            <li>Job seekers in healthcare, education, and social care</li>
+            <li>Professionals seeking CPD points or skill upgrades</li>
+            <li>Students preparing for global opportunities</li>
+            <li>Anyone passionate about career growth and professional skills</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span>6. What do I get after completing a course?</span>
+          <div class="icon-wrap"><span class="icon">+</span></div>
+        </button>
+        <div class="accordion-body">
+          <ul>
+            <li>A CPD-aligned Diploma Certificate (with verification ID)</li>
+            <li>International & local CV templates</li>
+            <li>Career support with job platforms (local & abroad)</li>
+            <li>SkillBridge verification system for employers</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span>7. Do you provide job support after training?</span>
+          <div class="icon-wrap"><span class="icon">+</span></div>
+        </button>
+        <div class="accordion-body">
+          <p>Yes ✅ We connect learners to international and local job platforms, including those with sponsorship opportunities.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span>8. How do I apply?</span>
+          <div class="icon-wrap"><span class="icon">+</span></div>
+        </button>
+        <div class="accordion-body">
+          <p>Applications can be made through:</p>
+          <ul>
+            <li>WhatsApp: +234706849264959</li>
+            <li>Email: skillbridgeglobalinstitute@gmail.com</li>
+            <li>Instagram/Facebook: @SkillBridgeGlobalInstitute</li>
+            <li>Website: www.skillbridgeglobal.com</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span>9. Do I need prior experience to join?</span>
+          <div class="icon-wrap"><span class="icon">+</span></div>
+        </button>
+        <div class="accordion-body">
+          <p>Not necessarily. Some courses are entry-level, while others may require a background in healthcare, education, or management. Each course page provides details.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span>10. Can international students apply?</span>
+          <div class="icon-wrap"><span class="icon">+</span></div>
+        </button>
+        <div class="accordion-body">
+          <p>Yes 🌍. Our online learning format makes SkillBridge accessible worldwide. Certificates can be verified globally.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span>11. What makes SkillBridge different from others?</span>
+          <div class="icon-wrap"><span class="icon">+</span></div>
+        </button>
+        <div class="accordion-body">
+          <ul>
+            <li>✅ CPD-aligned courses with global recognition</li>
+            <li>✅ Flexible learning slots</li>
+            <li>✅ Interactive teaching with practical activities</li>
+            <li>✅ Career and CV support</li>
+            <li>✅ Diploma verification system for employers</li>
+            <li>✅ Affordable tuition compared to international training centers</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+          <div class="contact-grid">
+            <div class="card subscribe-card">
+              <h3>Stay Updated</h3>
+              <p>
+                Get notified about new batches, discounts, and free resources.
+              </p>
+              <form action="/subscribe" method="POST" class="subscribe-form">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your email address"
+                  required
+                />
+                <button type="submit">Subscribe</button>
+              </form>
+              <small>We respect your privacy. Unsubscribe anytime.</small>
+            </div>
+
+            <div class="card contact-card">
+              <h3>Contact Us</h3>
+              <div class="contact-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span>12 Training Ave, Ikeja, Lagos, Nigeria</span>
+              </div>
+              <div class="contact-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                <a href="tel:+2348012345678">+234 801 234 5678</a>
+              </div>
+              <div class="contact-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                </svg>
+                <a href="https://wa.me/2348012345678" target="_blank">Chat on WhatsApp</a>
+              </div>
+              <div class="contact-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <a href="mailto:support@sbgi.edu.ng">support@sbgi.edu.ng</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="site-footer">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <h2>SkillBridge</h2>
+            <p>Global training for career-ready professionals.</p>
+          </div>
+
+          <div class="footer-section footer-location">
+            <h3>Visit Us</h3>
+            <address>
+              Cravings Superstore<br />
+              Building, 17 Adesiyan Street<br />
+              First Floor, Ojota<br />
+              Lagos 105102, Lagos<br />
+              Nigeria
+            </address>
+          </div>
+
+          <div class="footer-section footer-links">
+            <h3>Quick Links</h3>
+            <a href="index2.html" class="footer-link">Home</a>
+            <a href="About/about.html" class="footer-link">About</a>
+            <a href="courses.html" class="footer-link">Courses</a>
+            <a href="faq.html" class="footer-link">FAQ</a>
+          </div>
+
+          <div class="footer-section footer-connect">
+            <h3>Contact Us</h3>
+            <p>
+              Email:
+              <a href="mailto:info@skillbridgeglobal.com" class="footer-link">info@skillbridgeglobal.com</a>
+            </p>
+            <p>
+              Phone:
+              <a href="tel:+2348001234567" class="footer-link">+234 800 123 4567</a>
+            </p>
+          </div>
+          <div class="footer-section footer-media">
+            <div class="footer-socials" aria-label="Social media links">
+              <h3>Social Media</h3>
+              <div>
+                <a href="https://www.tiktok.com/@skillbridge.global.inst?_r=1&_t=ZS-95nwpN18IwH" class="footer-social-link" aria-label="TikTok">
+                  <svg xmlns="w3.org" viewBox="0 0 448 512" width="15" padding="40" fill="#FFFFFF" style="transition: fill 0.3s" onmouseover="this.style.fill = '#fe2c55'" onmouseout="this.style.fill = '#FFFFFF'">
+                    <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a72.59,72.59,0,1,0,50.23,69.63V0h90a116.79,116.79,0,0,0,21.74,67.63,117.15,117.15,0,0,0,61,40.14v89.75,12.39Z" />
+                  </svg>
+                </a>
+                <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+                <a href="#" class="footer-social-link" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="footer-note">© 2026 SkillBridge Global Institute · All rights reserved</p>
+      </footer>
+      </div>
+      
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (menuToggle && mobileMenu) {
+          menuToggle.addEventListener('click', function() {
+            const isOpen = mobileMenu.classList.toggle('open');
+            menuToggle.classList.toggle('active', isOpen);
+            menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+          });
+
+          document.addEventListener('click', function(event) {
+            if (
+              mobileMenu.classList.contains('open') &&
+              !mobileMenu.contains(event.target) &&
+              !menuToggle.contains(event.target)
+            ) {
+              mobileMenu.classList.remove('open');
+              menuToggle.classList.remove('active');
+              menuToggle.setAttribute('aria-label', 'Open menu');
+            }
+          });
+
+          mobileMenu.querySelectorAll('.mobile-menu-link').forEach((link) => {
+            link.addEventListener('click', function() {
+              mobileMenu.classList.remove('open');
+              menuToggle.classList.remove('active');
+              menuToggle.setAttribute('aria-label', 'Open menu');
+            });
+          });
+        }
+
+        document.querySelectorAll('.accordion-header').forEach((button) => {
+          button.addEventListener('click', () => {
+            const item = button.parentElement;
+            const isActive = item.classList.contains('active');
+
+            document.querySelectorAll('.accordion-item').forEach((i) => {
+              i.classList.remove('active');
+            });
+
+            if (!isActive) {
+              item.classList.add('active');
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
